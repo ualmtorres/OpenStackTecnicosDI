@@ -1,0 +1,150 @@
+////
+NO CAMBIAR!!
+Codificación, idioma, tabla de contenidos, tipo de documento
+////
+:encoding: utf-8
+:lang: es
+:toc: right
+:toc-title: Tabla de contenidos
+:doctype: book
+:imagesdir: ./images
+
+
+////
+Nombre y título del trabajo
+////
+# Eliminación de proyectos OpenStack-DI
+Manuel Torres <mtorres@ual.es>
+
+
+// NO CAMBIAR!! (Entrar en modo no numerado de apartados)
+:numbered!: 
+
+
+image:di.png[]
+
+[abstract]
+== Resumen
+////
+COLOCA A CONTINUACION EL RESUMEN
+////
+Actualmente, Openstack no permite la eliminación directa de todos los recursos creados dentro de un proyecto (p.e. instancias, volúmenes, snapshots, infraestructura de red, ...). En este tutorial se muestra cómo liberar los recursos asociados a un proyecto existente en OpenStack DI.
+
+////
+COLOCA A CONTINUACION LOS OBJETIVOS
+////
+.Objetivos
+* Liberar los objetos de un proyecto que consumen más recursos de OpenStack
+* Eliminar la infraestructura de red de un proyecto
+
+
+
+// Entrar en modo numerado de apartados
+:numbered:
+
+
+//// 
+COLOCA A CONTINUACION EL TITULO DEL APARTADO
+////
+== Modificar los miembros del proyecto a eliminar
+
+
+
+//// 
+COLOCA A CONTINUACION EL CONTENIDO DEL APARTADO
+////
+OpenStack sólo permite la eliminación de recursos de un proyecto (p.e. instancias, volúmenes) a los miembros del proyecto. Por tanto, para liberar recursos de un proyecto habrá que ser miembro de ese proyecto.
+
+Como administrador, añadiremos a un técnico de laboratorio al proyecto en caso de que no hubiese sido añadido anteriomente.
+
+Pasos:
+
+. Iniciar sesión de administrador
+. Mostrar la lista de proyectos. Menú `Identity | Projects`. 
+. Buscar el proyecto a modificar. Introducir parte del nombre del proyecto en el cuadro de texto `Filter` de la parte superior derecha. Si no apareciese el proyecto, avanzar en la lista de proyectos pulsando el enlace de proyectos siguientes en la parte inferior. Repetir este paso hasta encontrar el proyecto a modificar.
+. Pulsar el botón `Modificar miembros` del proyecto a modificar. 
+. En el cuadro de diálogo `Edit Project` seleccionar de la lista de la izquierda al técnico a añadir al proyecto.
+. Pulsar el botón + para añadir al técnico a la lista de la derecha de `Project Members`
+. Guardar los cambios
+
+== Eliminación de imágenes del proyecto
+
+Pasos:
+
+. Iniciar sesión como usuario del proyecto
+. Mostrar la lista de imágenes. Menú `Compute | Images` . 
+. Mostrar la lista de imágenes creadas en el proyecto pulsando el botón `Project` de la parte superior 
+. Seleccionar las imágenes a eliminar
+. Pulsar el botón `Delete Images`
+
+
+== Eliminación de volúmenes del proyecto
+
+Pasos:
+
+. Iniciar sesión como usuario del proyecto
+. Mostrar la lista de volúmenes. Menú `Compute | Volumes`. 
+. Seleccionar el volumen a eliminar
+. En el desplegable de la derecha del volumen seleccionar `Manage attachments`
+. En el cuadro de diálogo que aparece pulsar el botón `Detach volume`
+. Una vez desconectado el volumen, seleccionar de la lista de volúmenes el volumen a eliminar.
+. Pulsar el botón `Delete volume`
+. Repetir estos pasos para cada uno de los volúmenes a eliminar.
+
+== Eliminación de instancias del proyecto
+
+Pasos:
+
+. Iniciar sesión como usuario del proyecto
+. Mostrar la lista de instancias seleccionando el menú `Compute | Instances` . 
+. Seleccionar las instancias a eliminar
+. Pulsar el botón `Terminate Instances`
+
+== Eliminación de interfaces de red de los routers del proyecto
+
+Pasos:
+
+. Iniciar sesión como usuario del proyecto
+. Mostrar la topología de red seleccionando el menú `Network | Network topology`.
+. Situar el ratón sobre el router en el que está la intefaz de red a eliminar.
+. En el menú contextual que aparece, pulsar el botón `Delete Interface`.
+. Repetir estos pasos para todas las interfaces de red a eliminar
+
+
+== Eliminación de routers del proyecto
+
+Pasos:
+
+. Iniciar sesión como usuario del proyecto
+. Mostrar las lista de routers seleccionando el menú `Network | Routers` . 
+. Seleccionar los routers a eliminar
+. Pulsar el botón `Delete routers`
+. Repetir estos pasos para todos los routers a eliminar
+
+
+== Eliminación de subredes del proyecto
+
+Pasos:
+
+. Iniciar sesión como usuario del proyecto
+. Mostrar las lista de subredes seleccionando el menú `Network | Networks` . 
+. Seleccionar las redes a eliminar. **ATENCION: No seleccionar la red `ext-net` en la lista de redes a eliminar**
+. Pulsar el botón `Delete networks`
+. Repetir estos pasos para todas las subredes a eliminar
+
+[CAUTION]
+====
+No seleccionar la red `ext-net` en la lista de redes a eliminar
+====
+
+== Eliminación del proyecto
+
+
+Pasos:
+
+. Iniciar sesión de administrador
+. Mostrar la lista de proyectos seleccionando el menú `Identity | Projects`. 
+. Buscar el proyecto a eliminar. Introducir parte del nombre del proyecto en el cuadro de texto `Filter` de la parte superior derecha. Si no apareciese el proyecto, avanzar en la lista de proyectos pulsando el enlace de proyectos siguientes en la parte inferior. Repetir este paso hasta encontrar el proyecto a eliminar.
+. En el desplegable del proyecto a eliminar pulsar el botón `Delete Project`. 
+
+
